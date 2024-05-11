@@ -9,3 +9,8 @@
 ### 代码：
         代码原址：https://github.com/owenliang/rag-retrieval/tree/main
         运行平台：Kaggle运行；
+## llms-3
+### 视频地址：https://www.youtube.com/playlist?list=PLfaIDFEXuae2LXbO1_PKyVJiQ23ZztA0x
+### 代码：
+        代码原址：https://github.com/langchain-ai/rag-from-scratch/tree/main
+        运行平台：Kaggle运行；
