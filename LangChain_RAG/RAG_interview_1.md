@@ -1,3 +1,5 @@
+> From:https://github.com/lichuachua/llm_interview_note/tree/main/08.%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BArag
+
 # 检索增强llm
 
 > 文章来源：[万字长文: 检索增强 LLM (qq.com)](https://mp.weixin.qq.com/s?__biz=MzA5NTQ2MDEyOA==\&mid=2247484380\&idx=1\&sn=7b0b5dc3f76dd7a634ebb77df8697a24\&chksm=90be4d93a7c9c485593b6a299d607bfbcc30f05ec691b85f1fb6cf81c51ffe863dbc34759be6\&mpshare=1\&scene=1\&srcid=1204gaSWi0sA7clI6UZEYYL5\&sharer_shareinfo=f728c72f50e0aee521fb1319eb3b82b0\&sharer_shareinfo_first=f728c72f50e0aee521fb1319eb3b82b0#rd "万字长文: 检索增强 LLM (qq.com)")
@@ -430,82 +432,3 @@ LlamaIndex 主要包含以下组件和特性：
 除了 LlamaIndex，[LangChain](https://python.langchain.com/docs/get_started/introduction.html "LangChain") 也是当前流行的一种 LLM 应用开发框架，其中也包含一些检索增强 LLM 的相关组件，不过相比较而言，LlamaIndex 更侧重于检索增强 LLM 这一相对小的领域，而 LangChain 覆盖的领域更广，比如会包含 LLM 的链式应用、Agent 的创建和管理等。下面这张图就是 LangChain 中 [Retrieval](https://python.langchain.com/docs/modules/data_connection/ "Retrieval") 模块的整体流程示意图，包含数据加载、变换、嵌入、向量存储和检索，整体处理流程和 LlamaIndex 是一样的。
 
 ![](image/etz_ewki3z_V1-MnDWJWp.jpeg)
-
-## 3.3 Github Copilot 分析
-
-[Github Copilot](https://github.com/features/copilot "Github Copilot") 是一款 AI 辅助编程工具。如果使用过就会发现，Github Copilot 可以根据代码的上下文来帮助用户自动生成或者补全代码，有时候可能刚写下类名或者函数名，又或者写完函数注释，Copilot 就给出了生成好的代码，并且很多时候可能就是我们想要实现的代码。由于 Github Copilot 没有开源，网上有人对其 VSCode 插件进行了逆向分析，比如 [copilot internals](https://thakkarparth007.github.io/copilot-explorer/posts/copilot-internals "copilot internals") 和 [copilot analysis](https://github.com/mengjian-github/copilot-analysis "copilot analysis")，让我们可以对 Copilot 的内部实现有个大概的了解。
-
-简单来说，**Github Copilot 插件会收集用户在 VSCode 编程环境中的多种上下文信息构造 Prompt，然后把构造好的 Prompt 发送给代码生成模型 ( 比如 Codex )，得到补全后的代码，显示在编辑器中**。如何检索出相关的上下文信息 ( Context ) 就是其中很重要的一个环节。Github Copilot 算是检索增强 LLM 在 AI 辅助编程方向的一个应用。
-
-需要说明的是，上面提到的两份逆向分析是几个月之前做的，Github Copilpot 目前可能已经做了很多的更新和迭代，另外分析是原作者阅读理解逆向后的代码得到的，所以可能会产生一些理解上的偏差。而下面的内容是我结合那两份分析产生的，因此有些地方可能是不准确甚至是错误的，但不妨碍我们通过 Copilot 这个例子来理解上下文信息对增强 LLM 输出结果的重要性，以及学习一些上下文相关信息检索的实践思路。
-
-下面是一个 Prompt 的示例，可以看到包含前缀代码信息 ( prefix )，后缀代码信息 ( suffix )，生成模式 ( isFimEnabled )，以及 Prompt 不同组成元素的起始位置信息 ( promptElementRanges )。
-
-![](image/zl450wocuu_FlQ30ppSa8.png)
-
-抛开代码生成模型本身的效果不谈，Prompt 构造的好坏很大程度上会影响代码补全的效果，而上下文相关信息 ( Context ) 的提取和构成很大程度上又决定了 Prompt 构造的好坏。让我们来看一下 Github Copilot 的 Prompt 构造中有关上下文相关信息抽取的一些关键思路和实现。
-
-Copilot 的 Prompt 包含不同类型的相关信息，包括
-
--   `BeforeCursor`：光标前的内容
--   `AfterCursor`：光标后的内容
--   `SimilarFile`：与当前文件相似度较高的代码片段
--   `ImportedFile` ：import 依赖
--   `LanguageMarker`：文件开头的语言标记
--   `PathMarker`：文件的相对路径信息
-
-其中相似代码片段的抽取，会先获取最近访问过的多份同种语言的文件，作为抽取相似代码片段的候选文档。然后设定窗口大小 ( 比如默认为 60 行 ) 和步长 ( 比如默认为 1 行 )，以滑动窗口的方式将候选文档切分成代码块。接着计算每个切分后的代码块和当前文件的相似度，最后保留相似度较高的几个代码块。这里当前文件的获取是从当前光标往前截取窗口大小的内容，相似度的度量采用的是 **Jaccard 系数**，具体来说，会对代码块中的每一行进行分词，过滤常见的代码关键字 ( 比如 if, then, else, for 这些)，得到一个标记 ( Token ) 集合，然后就可以在当前代码块和候选代码块的 Token 集合之间计算 Jaccard 相似度。在 Copilot 的场景下，这种相似度的计算方式简单有效。
-$J(A, B) = \frac{|A \cap B|}{|A \cup B|} = \frac{|A \cap B|}{|A| + |B| - |A \cap B|}$
-上面的一篇分析文章中将 Prompt 的组成总结成下面的一张图。
-
-![](image/-7odlfea82_3dhsxoTUoM.png)
-
-构造好 Prompt 后，Copilot 还会判断是否有必要发起请求，代码生成模型的计算是非常耗费算力的，因此有必要过滤一些不必要的请求。其中一个判断是利用简单的线性回归模型对 Prompt 进行打分，当分数低于某个阈值时，请求就不会发出。这个线性回归模型利用的特征包括像代码语言、上一次代码补全建议是否被采纳或拒绝、上一次采纳或拒绝距现在的时长、光标左边的字符等。通过分析模型的权重，原作者给出了一些观察：
-
--   一些编程语言的权重相对于其他语言权重要更高 ( php > js > python > rust > ... )，PHP 权重最高，果然 **PHP是世界上最好的语言**( ^ \_^ )。
--   右半边括号 ( 比如 `)`，`]` ) 的权重要低于左半边括号，这是符合逻辑的。
-
-通过对 Github Copilot 这个编程辅助工具的分析可以看到：
-
--   **检索增强 LLM 的思路和技术在 Github Copilot 的实现中发挥着重要作用**
--   上下文相关信息 ( Context ) 可以是一个广义概念，可以是相关的文本或者代码片段，也可以是文件路径、相关依赖等，每个场景都可以定义其特定的上下文元素
--   相似性的度量和相似检索方法可以因场景而异，不一定所有场景都需要用余弦相似度，都需要通过向量相似检索的方式找出相关文档，比如 Copilot 的实现中就利用简单的 Jaccard 系数来计算分词后 Token 集合的相似度，简单高效。
-
-## 3.4 文档和知识库的检索与问答
-
-检索增强 LLM 技术的一个典型应用是知识库或者文档问答，比如针对企业内部知识库或者一些文档的检索与问答等。这个应用方向目前已经出现了很多商业化和开源的产品。比如 [Mendable](https://www.mendable.ai/ "Mendable") 就是一款商业产品，能提供基于文档的 AI 检索和问答能力。上面提到的 LlamaIndex 和 LangChain 项目官方文档的检索能力就是由 Mendable 提供的。下面就是一张使用截图，可以看到 Mendable 除了会给出生成的回复，也会附上参考链接。
-
-![](image/uepwk88u4-_zWv9MCSH7K.png)
-
-除了商业产品，也有很多类似的开源产品。比如
-
--   [Danswer](https://github.com/danswer-ai/danswer "Danswer"): 提供针对企业内部文档的问答功能，能实现多种来源的数据导入，支持传统的检索和基于 LLM 的问答，能智能识别用户的搜索意图，从而采用不同的检索策略，支持用户和文档的权限管理，以及支持Docker部署等
--   [PandaGPT](https://www.pandagpt.io/ "PandaGPT"): 支持用户上传文件，然后可以针对文件内容进行提问
--   [FastGPT](https://fastgpt.run/ "FastGPT"): 一个开源的基于 LLM 的 AI 知识库问答平台
--   [Quivr](https://github.com/StanGirard/quivr "Quivr"): 这个开源项目能实现用户对个人文件或者知识库的检索和问答，期望成为用户的「第二大脑」
--   [ChatFiles](https://github.com/guangzhengli/ChatFiles "ChatFiles"): 又一个基于 LLM 的文档问答开源项目
-
-下面这张图是 ChatFiles 项目的技术架构图，可以发现这类项目的基本模块和架构都很类似，基本都遵从检索增强 LLM 的思路，这类知识库问答应用几乎成为 LLM 领域的 **Hello World** 应用了。
-
-![](image/4x9fc4i_0r_X2ien8uvk1.png)
-
-# 4.参考
-
-1.  [ChatGPT Retrieval Plugin](https://github.com/openai/chatgpt-retrieval-plugin "ChatGPT Retrieval Plugin") #project
-2.  [Hypothetical Document Embeddings](https://arxiv.org/abs/2212.10496?ref=mattboegner.com "Hypothetical Document Embeddings") #paper
-3.  [Knowledge Retrieval Architecture for LLM’s (2023)](https://mattboegner.com/knowledge-retrieval-architecture-for-llms/ "Knowledge Retrieval Architecture for LLM’s (2023)") #blog
-4.  [Chunking Strategies for LLM Applications](https://www.pinecone.io/learn/chunking-strategies/ "Chunking Strategies for LLM Applications") #blog
-5.  [LangChain Document Transformers](https://python.langchain.com/docs/modules/data_connection/document_transformers/ "LangChain Document Transformers") #doc
-6.  [LlamaIndex Index Guide](https://gpt-index.readthedocs.io/en/latest/core_modules/data_modules/index/index_guide.html "LlamaIndex Index Guide") #doc
-7.  [Full stack LLM Bootcamp: Augmented Language Models](https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/augmented-language-models/ "Full stack LLM Bootcamp: Augmented Language Models") #course
-8.  [Pinecone: vector indexes in faiss](https://www.pinecone.io/learn/series/faiss/vector-indexes/ "Pinecone: vector indexes in faiss") #blog
-9.  [Pinecone: what is a vector database](https://www.pinecone.io/learn/vector-database/ "Pinecone: what is a vector database") #blog
-10. [Zero and Few Shot Text Retrieval and Ranking Using Large Language Models](https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/ "Zero and Few Shot Text Retrieval and Ranking Using Large Language Models") #blog
-11. [copilot internals](https://thakkarparth007.github.io/copilot-explorer/posts/copilot-internals "copilot internals") #blog
-12. [copilot analysis](https://github.com/mengjian-github/copilot-analysis "copilot analysis") #blog
-13. [Discover LlamaIndex: Key Components to Build QA Systems](https://www.youtube.com/watch?v=A3iqOJHBQhM\&ab_channel=LlamaIndex "Discover LlamaIndex: Key Components to Build QA Systems") #video
-14. [Billion scale approximate nearest neighbor search](https://wangzwhu.github.io/home/file/acmmm-t-part3-ann.pdf "Billion scale approximate nearest neighbor search") #slide
-15. [ACL 2023 Tutorial: Retrieval based LM](https://acl2023-retrieval-lm.github.io/ "ACL 2023 Tutorial: Retrieval based LM") #slide
-16. [Pinecone: why use retrieval instead of larger context](https://www.pinecone.io/blog/why-use-retrieval-instead-of-larger-context/ "Pinecone: why use retrieval instead of larger context") #blog
-17. [RETA-LLM](https://github.com/RUC-GSAI/YuLan-IR/tree/main/RETA-LLM "RETA-LLM") #project
-18. [Document Metadata and Local Models for Better, Faster Retrieval](https://www.youtube.com/watch?v=njzB6fm0U8g\&ab_channel=LlamaIndex "Document Metadata and Local Models for Better, Faster Retrieval") #video
