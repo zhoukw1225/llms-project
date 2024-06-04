@@ -11,6 +11,26 @@
 ![img.png](img.png)
 
 
+分析请求：
+![img_3.png](img_3.png)
+curl 'http://localhost:8080/chat' \
+  -H 'Accept-Language: zh-CN,zh;q=0.9' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json' \
+  -H 'Origin: http://localhost:3000' \
+  -H 'Referer: http://localhost:3000/' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-site' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36' \
+  -H 'accept: text/event-stream' \
+  -H 'sec-ch-ua: "Google Chrome";v="125", "Chromium";v="125", "Not.A/Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  --data-raw '{"message":"OpenAI呢？","history":[{"human":"什么是langchain?","ai":"LangChain是一个软件平台，用于自然语言处理和人工智能任务。它提供了一系列的链式模型（Chain），可以用于对话、文本摘要、语言生成等任务。LangChain的核心是LLM（Language Learning Model），它是一个通用的语言模型，可以用于各种自然语言处理任务。LangChain还提供了与其他开源库和服务的集成，如OpenAI、IBM Watson等。通过使用LangChain，开发人员可以更轻松地构建和部署自然语言处理应用程序。[0][2]"},{"human":"LLM呢？","ai":"LLM代表Language Learning Model，是LangChain平台的核心组件之一。LLM是一种通用的语言模型，可以用于各种自然语言处理任务，如对话生成、文本摘要、语言翻译等。LLM通过学习大量的语言数据和模式，能够理解和生成自然语言文本。它可以根据输入的上下文和提示生成连贯的语言输出。LLM的设计目标是提供高质量的语言处理能力，同时具备灵活性和可扩展性，以满足不同应用场景的需求。[0][2]"}],"conversation_id":"91bad3fe-72e6-4330-978e-fca37b45ecb8"}'
+
+
+
 # 🦜️🔗 Chat LangChain
 
 
