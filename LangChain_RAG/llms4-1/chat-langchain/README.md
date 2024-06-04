@@ -1,4 +1,16 @@
+本地运行
+1. 修改ingest.py文件中TODO对应的密钥
+在项目根目录下运行python ingest.py，会在对应的weaviate生产矢量数据，supabase可以查询记录
+2. 修改main.py文件中TODO对应的密钥
+在项目根目录下运行poetry run make start，后端服务运行于 http://127.0.0.1:8080 
+3. 进入chat-langchain目录
+运行yarn dev，前端服务运行于 http://localhost:3000
+4. 浏览器打开前端地址： http://localhost:3000
+
+
+
 # 🦜️🔗 Chat LangChain
+
 
 This repo is an implementation of a locally hosted chatbot specifically focused on question answering over the [LangChain documentation](https://langchain.readthedocs.io/en/latest/).
 Built with [LangChain](https://github.com/hwchase17/langchain/), [FastAPI](https://fastapi.tiangolo.com/), and [Next.js](https://nextjs.org).
