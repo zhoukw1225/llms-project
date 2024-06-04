@@ -6,7 +6,7 @@
 3. 进入chat-langchain目录
 运行yarn dev，前端服务运行于 http://localhost:3000
 4. 浏览器打开前端地址： http://localhost:3000
-
+![img.png](img.png)
 
 
 # 🦜️🔗 Chat LangChain
