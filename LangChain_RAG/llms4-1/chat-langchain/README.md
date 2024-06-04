@@ -1,6 +1,8 @@
 本地运行
 1. 修改ingest.py文件中TODO对应的密钥
-在项目根目录下运行python ingest.py，会在对应的weaviate生产矢量数据，supabase可以查询记录
+在项目根目录下运行python ingest.py，会在对应的weaviate生产矢量数据，supabase可以查询记录  
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
 2. 修改main.py文件中TODO对应的密钥
 在项目根目录下运行poetry run make start，后端服务运行于 http://127.0.0.1:8080 
 3. 进入chat-langchain目录
