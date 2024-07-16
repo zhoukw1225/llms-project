@@ -27,6 +27,12 @@
             https://github.com/webup/agi-talks/blob/master/301-langchain-chatdoc/src/slides.md
             https://blog.langchain.dev/building-chat-langchain-2/
             
-            
-            
-            
+
+
+# LangChain_Agent
+## AI_Agent
+### 视频地址：
+    https://www.bilibili.com/video/BV1JV411F7Yj/
+### 代码：
+    代码原址：https://github.com/parallel75/AI_Agent  
+    运行平台：本地
