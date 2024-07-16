@@ -30,7 +30,11 @@ openai_api_key=os.getenv("OPENAI_API_KEY")
 
 #调用 Google search by Serper
 def search(query):
-    serper_google_url = os.getenv("SERPER_GOOGLE_URL")
+    print("Search starting")
+    # serper_google_url = os.getenv("SERPER_GOOGLE_URL")
+    # serper_google_url = "https://google.serper.dev/search"
+    serper_google_url = "https://serpapi.com/search"
+
     print(f"Serper Google Search URL: {serper_google_url}")
 
     payload = json.dumps({
@@ -145,7 +149,7 @@ tools = [
         func=search,
         description="useful for when you need to answer questions about current events, data. You should ask targeted questions"
     ),
-    ScrapeWebsiteTool(),
+    # ScrapeWebsiteTool(),
 ]
 
 #初始话角色详细描述
