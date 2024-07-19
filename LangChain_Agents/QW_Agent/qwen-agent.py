@@ -5,28 +5,21 @@ import broadscope_bailian
 import datetime
 
 
-def llm(query, history=[], user_stop_words=[]):  # 调用api_server
+def llm(prompt):  # 调用api_server
     access_key_id = os.environ.get("ACCESS_KEY_ID")
     access_key_secret = os.environ.get("ACCESS_KEY_SECRET")
     agent_key = os.environ.get("AGENT_KEY")
     app_id = os.environ.get("APP_ID")
 
     try:
-        messages = [{'role': 'system', 'content': 'You are a helpful assistant.'}]
-        for hist in history:
-            messages.append({'role': 'user', 'content': hist[0]})
-            messages.append({'role': 'assistant', 'content': hist[1]})
-        messages.append({'role': 'user', 'content': query})
         client = broadscope_bailian.AccessTokenClient(access_key_id=access_key_id, access_key_secret=access_key_secret,
                                                       agent_key=agent_key)
-        resp = broadscope_bailian.Completions(token=client.get_token()).create(
-            app_id=app_id,
-            messages=messages,
-            result_format="message",
-            stop=user_stop_words,
-        )
-        # print(resp)
-        content = resp.get("Data", {}).get("Choices", [])[0].get("Message", {}).get("Content")
+        token = client.get_token()
+
+        resp = broadscope_bailian.Completions(token=token).call(app_id=app_id, prompt=prompt)
+        print("resp:",resp)
+        # content = resp.get("Data", {}).get("Choices", [])[0].get("Message", {}).get("Content")
+        content = resp.get("Data", {}).get("Text")
         return content
     except Exception as e:
         return str(e)
@@ -87,7 +80,7 @@ def agent_execute(query, chat_history=[]):
         prompt = prompt_tpl.format(today=today, chat_history=history, tool_descs=tool_descs, tool_names=tool_names,
                                    query=query, agent_scratchpad=agent_scratchpad)
         print('\033[32m---等待LLM返回... ...\n%s\n\033[0m' % prompt, flush=True)
-        response = llm(prompt, user_stop_words=['Observation:'])
+        response = llm(prompt)
         print('\033[34m---LLM返回---\n%s\n---\033[34m' % response, flush=True)
 
         # 2）解析thought+action+action input+observation or thought+final answer
