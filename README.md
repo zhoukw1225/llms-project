@@ -36,3 +36,10 @@
 ### 代码：
     代码原址：https://github.com/parallel75/AI_Agent  
     运行平台：本地
+
+## QW_Agent
+### 视频地址：
+    https://www.bilibili.com/video/BV1QF4m177Rx/
+### 代码：
+    代码原址：https://github.com/owenliang/agent
+    运行平台：本地
