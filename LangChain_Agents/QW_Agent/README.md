@@ -7,7 +7,9 @@
     2.给这个用户【https://ram.console.aliyun.com/permissions】添加百炼访问权限AliyunSFMFullAccess或者AliyunSFMReadOnlyAccess
     3.在阿里云百炼平台【https://bailian.console.aliyun.com/】的”我的应用“创建应用「获得agent_key和app_id」
     4.在阿里云百炼平台账号管理给刚刚创建的用户添加的创建好应用的权限
-
+# 运行
+    运行python qwen-agent.py，llm会判断是否需要调用搜索，如果需要调用搜索，则如下图
+![img.png](img.png)
 # agent
 
 基于qwen的agent demo，支持历史对话
