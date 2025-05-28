@@ -1,4 +1,4 @@
-# 导读
+# ✅ 导读
 
 本项目为大模型应用开发 RAG 和 Agent 简单 Demo 展示，均使用LangChain框架，包含最基础的扫盲课程，主要是协助大家🧐快速入门🧐。
 目录结构为三部分：
@@ -6,7 +6,7 @@
 - **LangChain_Agent 文件夹**：Agent相关的Demo和学习资料；
 - **Interview**：大模型RAG和Agent的面试八股。
 
-# LangChain_RAG
+# ✅ LangChain_RAG
 
 本部分一共**四个部分**：
 - llms-1和llms-2为B站上的🕶️**扫盲课**🕶️，两位Up主讲的清楚且简洁，主要是入门了解的，快速过一下即可；
@@ -44,10 +44,11 @@
 - https://blog.langchain.dev/building-chat-langchain-2/
             
 
-# LangChain_Agent
+# ✅ LangChain_Agent
 
-本部分一共**两个部分**：
-- AI_Agent 和 QW_Agent是B站两个简单的 Agent Demo，比较通俗易懂。
+本部分一共**两个部分**，是B站两个简单的 Agent Demo，比较通俗易懂。
+- AI_Agent 基于 OPENAI_API
+- QW_Agent 基于 QWen_API
 
 
 ## AI_Agent
@@ -64,9 +65,10 @@
     代码原址：https://github.com/owenliang/agent
     运行平台：本地
 
-# Interview
+# ✅ Interview
 本部分包含两部分面试八股，是本人在找工作期间收集和整理的大模型应用开发八股文，我就是通过这些找到了一些大厂高级AI研发工程师相关岗位的：
 - [大模型应用开发八股](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3987723560113356813&scene=126&uin=&key=&devicetype=iMac+MacBookPro18%2C3+OSX+OSX+15.4.1+build(24E263)&version=13080a10&lang=zh_CN&nettype=WIFI&ascene=78&fontScale=100)
 ## RAG
 - 详细介绍大模型（LLMs）RAG检索增强生成学习/面试过程中可能遇到的知识点，全文4w+字，按照处理流程整理：[大模型RAG知识笔记](https://mp.weixin.qq.com/s/zmUTGAMoljXSmnoo_cBQig)
+## Agent
 - 详细介绍大模型（LLMs）智能体Agent学习/面试过程中可能遇到的知识点，全文1w+字，按照模块整理：[大模型Agent知识笔记](https://mp.weixin.qq.com/s/TSioLS_RhrX57YEnY3mkag)
