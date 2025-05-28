@@ -1,7 +1,7 @@
 1.准备好OPENAI_API_KEY
 > export OPENAI_API_KEY=""  
 > 
-2.在https://serpapi.com/创建好SERPER_API_KEY
+2.在https://serpapi.com/ 中创建好SERPER_API_KEY
 ![img.png](img.png)
 > export SERPER_API_KEY=""
 > 
