@@ -53,20 +53,20 @@
 
 ## AI_Agent
 ### 视频地址：
-    https://www.bilibili.com/video/BV1JV411F7Yj/
+- https://www.bilibili.com/video/BV1JV411F7Yj/
 ### 代码：
-    代码原址：https://github.com/parallel75/AI_Agent  
-    运行平台：本地
+- 代码原址：https://github.com/parallel75/AI_Agent  
+- 运行平台：本地
 
 ## QW_Agent
 ### 视频地址：
-    https://www.bilibili.com/video/BV1QF4m177Rx/
+- https://www.bilibili.com/video/BV1QF4m177Rx/
 ### 代码：
-    代码原址：https://github.com/owenliang/agent
-    运行平台：本地
+- 代码原址：https://github.com/owenliang/agent
+- 运行平台：本地
 
 # ✅ Interview
-本部分包含两部分面试八股，是本人在找工作期间收集和整理的大模型应用开发八股文，我就是通过这些找到了一些大厂高级AI研发工程师相关岗位的：
+本部分包含两部分面试八股，是本人在找工作期间收集和整理的大模型应用开发八股文，本人实测，可以通过这些找到了一些大厂**高级AI研发工程师**相关岗位。
 - [大模型应用开发八股](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzk1NzgzMjY3OQ==&action=getalbum&album_id=3987723560113356813&scene=126&uin=&key=&devicetype=iMac+MacBookPro18%2C3+OSX+OSX+15.4.1+build(24E263)&version=13080a10&lang=zh_CN&nettype=WIFI&ascene=78&fontScale=100)
 ## RAG
 - 详细介绍大模型（LLMs）RAG检索增强生成学习/面试过程中可能遇到的知识点，全文4w+字，按照处理流程整理：[大模型RAG知识笔记](https://mp.weixin.qq.com/s/zmUTGAMoljXSmnoo_cBQig)
