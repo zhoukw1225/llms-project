@@ -20,7 +20,8 @@
 - 代码原址：https://github.com/blackinkkkxi/RAG_langchain/tree/main   
 - 运行平台：除了langchain_hf，都可以在Colab运行；Kaggle都可以运行；  
 ## llms-2
-### 视频地址：https://www.bilibili.com/video/BV1Cp421R7Y7
+### 视频地址：
+- https://www.bilibili.com/video/BV1Cp421R7Y7
 ### 代码：
 - 代码原址：https://github.com/owenliang/rag-retrieval/tree/main  
 - 运行平台：Kaggle运行；  
@@ -33,11 +34,7 @@
 - 运行平台：Kaggle运行；  
 ## llms-4
 ### 说明：
-- langchain-chat是官方给出的RAG项目例子，建议大家run一个简单的示例（老版本），在这里我删除了其中需要export的东西（因为需要debug）。
-### 代码：
-- 项目地址：https://github.com/langchain-ai/chat-langchain
-- 代码原址分支（老版本）：https://github.com/langchain-ai/chat-langchain/tree/3de16f8318abce7e88dc1da5444d9fb067a46200
-- 运行平台：本地
+- langchain-chat是官方给出的RAG项目例子，也是我推荐给各位的入门级项目，应网友要求，录制了手把手运行视频。参考：https://www.yuque.com/goodnote/llm-dev/zwwg6hu8b5chwl1u
 ### 参考资料：
 - https://www.bilibili.com/video/BV1eB4y1Z752/
 - https://github.com/webup/agi-talks/blob/master/301-langchain-chatdoc/src/slides.md
