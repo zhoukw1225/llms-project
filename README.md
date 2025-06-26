@@ -33,6 +33,8 @@
 - 代码原址：https://github.com/langchain-ai/rag-from-scratch/tree/main  
 - 运行平台：Kaggle运行；  
 ## llms-4
+### 代码：
+- https://github.com/lichuachua/chat-langchain-study/
 ### 说明：
 - langchain-chat是官方给出的RAG项目例子，也是我推荐给各位的入门级项目，应网友要求，录制了手把手运行视频。参考：https://www.yuque.com/goodnote/llm-dev/zwwg6hu8b5chwl1u
 ### 参考资料：
