@@ -17,12 +17,18 @@
 ### 视频地址：
 - https://www.bilibili.com/video/BV1qC4y1F7Dy
 ### 代码：
+- 代码地址：https://github.com/lichuachua/llms-project/tree/main/LangChain_RAG/llms-1/
+  - note（✅建议下载运行这个✅）：本人运行代码，部分包的更新（原作者代码部分包过期）
+  - original：原作者代码（不建议，可能需要更新包）
 - 代码原址：https://github.com/blackinkkkxi/RAG_langchain/tree/main   
 - 运行平台：除了langchain_hf，都可以在Colab运行；Kaggle都可以运行；  
 ## llms-2
 ### 视频地址：
 - https://www.bilibili.com/video/BV1Cp421R7Y7
 ### 代码：
+- 代码地址：https://github.com/lichuachua/llms-project/tree/main/LangChain_RAG/llms-2/
+  - note（✅建议下载运行这个✅）：本人运行代码，部分包的更新（原作者代码部分包过期）
+  - original：原作者代码（不建议，可能需要更新包）
 - 代码原址：https://github.com/owenliang/rag-retrieval/tree/main  
 - 运行平台：Kaggle运行；  
 ## llms-3
@@ -30,11 +36,16 @@
 - https://www.youtube.com/playlist?list=PLfaIDFEXuae2LXbO1_PKyVJiQ23ZztA0x
 - https://www.bilibili.com/video/BV1dm41127jc/
 ### 代码：
+- 代码地址：https://github.com/lichuachua/llms-project/tree/main/LangChain_RAG/llms-3/
+  - note（✅建议下载运行这个✅）：本人运行代码，部分包的更新（原作者代码部分包过期）
+  - original：原作者代码（不建议，可能需要更新包）
+  - PPT：官方视频对应的PPT
 - 代码原址：https://github.com/langchain-ai/rag-from-scratch/tree/main  
 - 运行平台：Kaggle运行；  
 ## llms-4
 ### 代码：
-- https://github.com/lichuachua/chat-langchain-study/
+- 代码地址（✅本人更改过后的代码，可以直接运行✅）：https://github.com/lichuachua/chat-langchain-study/
+- 代码原址（运行有问题，需要自己更改）：https://github.com/langchain-ai/chat-langchain
 ### 说明：
 - langchain-chat是官方给出的RAG项目例子，也是我推荐给各位的入门级项目，应网友要求，录制了手把手运行视频。参考：https://www.yuque.com/goodnote/llm-dev/zwwg6hu8b5chwl1u
 ### 参考资料：
