@@ -47,7 +47,7 @@
 - 🌹代码地址（✅本人更改过后的代码，可以直接运行✅）：https://github.com/lichuachua/chat-langchain-study/
 - 代码原址（运行有问题，需要自己更改）：https://github.com/langchain-ai/chat-langchain
 ### 说明：
-- langchain-chat是官方给出的RAG项目例子，也是我推荐给各位的入门级项目，应网友要求，录制了手把手运行视频。参考：https://www.yuque.com/goodnote/llm-dev/zwwg6hu8b5chwl1u
+- langchain-chat是官方给出的RAG项目例子，也是我推荐给各位的入门级项目，应网友要求，录制了手把手运行视频，保证你能运行起来。
 ### 参考资料：
 - https://www.bilibili.com/video/BV1eB4y1Z752/
 - https://github.com/webup/agi-talks/blob/master/301-langchain-chatdoc/src/slides.md
