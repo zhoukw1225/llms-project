@@ -25,7 +25,7 @@
   - note（✅建议下载运行这个✅）：本人运行代码，部分包的更新（原作者代码部分包过期）
   - original：原作者代码（同代码原址，不建议，可能需要更新包）
 - 代码原址：https://github.com/blackinkkkxi/RAG_langchain/tree/main   
-- 运行平台：除了langchain_hf，都可以在Colab运行；Kaggle都可以运行；  
+- 运行平台：除了langchain_hf，都可以在Colab运行；Kaggle都可以运行，Kaggle入门参考：[白嫖免费算力，量小但管够——Kaggle](https://mp.weixin.qq.com/s/SK5VXzx2zijzjc8OYJICKA)；
 ## llms-2
 ### 视频地址：
 - https://www.bilibili.com/video/BV1Cp421R7Y7
@@ -34,7 +34,7 @@
   - note（✅建议下载运行这个✅）：本人运行代码，部分包的更新（原作者代码部分包过期）
   - original：原作者代码（同代码原址，不建议，可能需要更新包）
 - 代码原址：https://github.com/owenliang/rag-retrieval/tree/main  
-- 运行平台：Kaggle运行；  
+- 运行平台：Kaggle运行，Kaggle入门参考：[白嫖免费算力，量小但管够——Kaggle](https://mp.weixin.qq.com/s/SK5VXzx2zijzjc8OYJICKA)；
 ## llms-3
 ### 视频地址：
 - 外网原视频（英文）：https://www.youtube.com/playlist?list=PLfaIDFEXuae2LXbO1_PKyVJiQ23ZztA0x
@@ -45,7 +45,7 @@
   - original：原作者代码（同代码原址，不建议，可能需要更新包）
   - PPT：官方视频对应的PPT
 - 代码原址：https://github.com/langchain-ai/rag-from-scratch/tree/main  
-- 运行平台：Kaggle运行；  
+- 运行平台：Kaggle运行，Kaggle入门参考：[白嫖免费算力，量小但管够——Kaggle](https://mp.weixin.qq.com/s/SK5VXzx2zijzjc8OYJICKA)；
 ## llms-4
 ### 代码：
 - 🌹代码地址（✅本人更改过后的代码，可以直接运行✅）：https://github.com/lichuachua/chat-langchain-study/
