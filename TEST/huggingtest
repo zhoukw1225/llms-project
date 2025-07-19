@@ -1,0 +1,12 @@
+from transformers import pipeline
+
+# 加载文本生成 pipeline，使用 distilgpt2 模型
+generator = pipeline("text-generation", model="distilgpt2")
+# 输入文本，设置生成参数：最大长度 30，生成 2 条序列
+res = generator(
+    "I love this course, we will knowlege about HuggingFace",
+    max_length=30,
+    num_return_sequences=2,
+)
+# 打印生成结果
+print(res)
